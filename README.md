@@ -85,6 +85,28 @@ terraform apply
 - Sufficient IAM permissions to create Connect, Lambda, IAM, and S3
   resources
 
+## Cost overview
+
+- **Amazon Connect usage**: per-minute charges for inbound/outbound call
+  minutes actually used (varies by region); no charge while idle.
+- **Claimed phone number** (`var.claim_phone_number = true`): a recurring
+  **monthly fee** (roughly $1-2/month for a DID, more for toll-free) *plus*
+  per-minute call rates — billed whether or not the number receives calls.
+  This is the main ongoing cost in this demo; set `claim_phone_number =
+  false` and `terraform apply` (or `terraform destroy`) to release it and
+  stop the charge.
+- **Contact Lens** (enabled on the instance): additional per-minute
+  analytics charge, but only when calls are actually analyzed — enabling
+  it alone doesn't cost anything without call volume.
+- **Lambda** (`customer_lookup`): covered by the free tier (1M
+  requests/month + 400,000 GB-seconds) at this demo's volume — effectively
+  $0.
+- **S3** (call recordings / chat transcripts): storage + request costs,
+  negligible for a demo unless you generate many recorded calls.
+- **No charge** just for the Connect instance, contact flow, queues,
+  routing profiles, or users existing — these are configuration, not
+  billed resources by themselves.
+
 ## Notes / gotchas
 
 - `instance_alias` must be globally unique across AWS.
