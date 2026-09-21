@@ -1,0 +1,6 @@
+# Amazon Connect password policy: 8+ chars, upper, lower, number/special.
+admin_password = "ChangeMe123!"
+
+# aws_region      = "us-east-1"
+# instance_alias  = "sample-connect-demo"
+# claim_phone_number = false

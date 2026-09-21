@@ -1,0 +1,35 @@
+# Terraform local state & working directory (contains resource IDs/ARNs;
+# use a remote backend for anything beyond solo/demo use).
+# Note: .terraform.lock.hcl is intentionally NOT ignored — commit it to pin
+# provider versions.
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Variable files that may contain secrets (e.g. admin_password) — commit
+# terraform.tfvars.example instead.
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example
+
+# Plan output files
+*.tfplan
+
+# Terraform CLI override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Lambda build artifacts
+terraform/build/
+
+# VS Code Terraform extension plan-artifact bundles (contain state data)
+terraform/connect
+*.tfplan.bundle
+
+# OS / editor cruft
+.DS_Store
+**/.DS_Store

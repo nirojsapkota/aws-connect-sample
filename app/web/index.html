@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Sample Amazon Connect Agent App</title>
+  <script src="https://cdn.jsdelivr.net/npm/amazon-connect-streams@2/release/connect-streams.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Sample Amazon Connect Agent Console</h1>
+    <p>
+      Enter your Connect instance alias below (or edit
+      <code>app.js</code>), then log in with the admin/agent credentials
+      created by Terraform.
+    </p>
+  </header>
+
+  <main>
+    <section id="config-panel">
+      <label for="instance-alias">Connect instance alias</label>
+      <input value="sample-connect-demo" id="instance-alias" type="text" placeholder="sample-connect-demo" />
+      <button id="init-btn">Load Contact Control Panel</button>
+    </section>
+
+    <section id="ccp-container">
+      <div id="ccp"></div>
+    </section>
+
+    <section id="customer-info">
+      <h2>Customer Info (from Lambda lookup attributes)</h2>
+      <pre id="customer-attrs">No active contact.</pre>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
